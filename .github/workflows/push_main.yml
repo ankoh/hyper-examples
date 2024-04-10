@@ -18,3 +18,8 @@ jobs:
 
             - name: Setup Hyper API
               uses: ./.github/actions/get-hyperapi
+
+            - name: List Hyper API version
+              run: |-
+                ${{ runner.temp }}/hyperapi/lib/hyper/hyperd --version
+              shell: bash
