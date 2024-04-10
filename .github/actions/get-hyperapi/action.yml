@@ -1,0 +1,18 @@
+runs:
+  using: "composite"
+  steps:
+    - name: Download Hyper API
+      env:
+        HYPER_API_VERSION: 0.0.18825.rd90b6d69
+        HYPER_API_ARCH: x86_64
+      run: |-
+        curl -Lo "https://downloads.tableau.com/tssoftware//tableauhyperapi-cxx-linux-${{env.HYPER_API_ARCH}}-release-main.${{env.HYPER_API_VERSION}}.zip"
+        mkdir -p /opt/hyperapi
+        tar xf ${{ github.action_path }}/hyperapi.zip -C /opt/hyperapi --strip-components 1
+      shell: bash
+
+    - name: List Hyper API folder
+      run: |-
+        ls /opt/hyperapi
+        ls /opt/hyperapi/bin
+      shell: bash

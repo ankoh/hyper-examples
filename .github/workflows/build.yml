@@ -1,0 +1,20 @@
+name: Build
+
+on:
+    push:
+        branches:
+            - 'main'
+
+jobs:
+    test_hyperapi:
+        name: Hyper API
+        runs-on: ubuntu-22.04
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  submodules: 'recursive'
+                  fetch-depth: 0
+                  ref: ${{ github.event.inputs.commit || github.sha }}
+
+            - name: Setup Hyper API
+              uses: ./.github/actions/get-hyperapi
