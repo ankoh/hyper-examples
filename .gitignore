@@ -1,0 +1,13 @@
+.DS_Store
+node_modules
+/target
+/.cache
+/.infra
+/default.profraw
+/default.prof
+yarn-error.log
+*.afdesign~lock~
+*.provisionprofile
+*.cer
+*.keychain-db
+
