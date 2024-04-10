@@ -29,3 +29,8 @@ runs:
       run: |-
         ls -lisah ${{ runner.temp }}/hyperapi/lib/hyper/
       shell: bash
+
+    - name: Print Hyper API version
+      run: |-
+        ${{ runner.temp }}/hyperapi/lib/hyper/hyperd --version
+      shell: bash

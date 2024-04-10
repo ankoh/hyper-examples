@@ -19,7 +19,7 @@ jobs:
             - name: Setup Hyper API
               uses: ./.github/actions/get-hyperapi
 
-            - name: List Hyper API version
-              run: |-
-                ${{ runner.temp }}/hyperapi/lib/hyper/hyperd --version
-              shell: bash
+            - name: Setup rust
+              uses: ./.github/actions/setup-rust
+              with:
+                os: ubuntu-22.04
