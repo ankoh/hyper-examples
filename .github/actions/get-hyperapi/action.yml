@@ -6,13 +6,13 @@ runs:
         HYPER_API_VERSION: 0.0.18825.rd90b6d69
         HYPER_API_ARCH: x86_64
       run: |-
-        curl -Lo ${{ github.action_path }}/hyperapi.zip "https://downloads.tableau.com/tssoftware//tableauhyperapi-cxx-linux-${{env.HYPER_API_ARCH}}-release-main.${{env.HYPER_API_VERSION}}.zip"
+        rm -rf ${{ runner.temp }}/hyperapi.zip
+        curl -Lo ${{ runner.temp }}/hyperapi.zip "https://downloads.tableau.com/tssoftware//tableauhyperapi-cxx-linux-${{env.HYPER_API_ARCH}}-release-main.${{env.HYPER_API_VERSION}}.zip"
         mkdir -p /opt/hyperapi
-        tar xf ${{ github.action_path }}/hyperapi.zip -C /opt/hyperapi --strip-components 1
+        7z x ${{ runner.temp }}/hyperapi.zip -o${{ runner.temp }}/hyperapi
       shell: bash
 
     - name: List Hyper API folder
       run: |-
-        ls /opt/hyperapi
-        ls /opt/hyperapi/bin
+        ls -lisah ${{ runner.temp }}/hyperapi
       shell: bash
