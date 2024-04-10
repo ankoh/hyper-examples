@@ -1,6 +1,18 @@
 runs:
   using: "composite"
   steps:
+    - name: Cache the Hyper API package
+      uses: actions/cache@v4
+      env:
+        HYPER_API_VERSION: 0.0.18825.rd90b6d69
+        HYPER_API_ARCH: x86_64
+      with:
+          path: |
+            ${{ runner.temp }}/hyperapi.zip
+          key: hyperapi-linux-${{env.HYPER_API_ARCH}}-${{env.HYPER_API_VERSION}}
+          restore-keys: |
+            hyperapi-linux-${{env.HYPER_API_ARCH}}-${{env.HYPER_API_VERSION}}
+
     - name: Download Hyper API
       env:
         HYPER_API_VERSION: 0.0.18825.rd90b6d69
